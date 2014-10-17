@@ -399,6 +399,10 @@ True
                             <small>Obrazek ze strony <a href="http://www.w3.org/TR/DOM-Level-2-Core/introduction.html">W3C</a></small>
                         </div>
                     </section>
+                    <section>
+                        <p class="uppercase">Narzędzia developerskie</p>
+                        <div class="devtools-image"></div>
+                    </section>
                 </section>
                 <section>
                     <section>
@@ -512,7 +516,35 @@ another shiny project by nekudo.com
                 </section>
                 <section>
                     <h2>Zadanie</h2>
-                    <p>Napisz wyszukiwarkę ofert na grouponie (np. ofert sushi), a następnie (TBA)</p>
+                    <p>Napisz program, który wyszukuje oferty na grouponie (np.
+                    oferty sushi), a następnie wysyła je mailem.</p>
+                </section>
+                <section>
+                    <h2>smtplib oraz email</h2>
+<pre><code class="python">
+    import smtplib
+    from email.mime.text import MIMEText
+
+    from_addr = 'my@domain.com'
+    password = 'mypassword'
+    smtp_server = 'smtp.server.com'
+    smtp_port = 465
+
+    recipient = 'your@domain.com'
+    subject = 'email subject'
+    message = '<div>this is my email message</div>'
+
+    msg = MIMEText(message, 'html', 'utf-8')
+
+    msg['Subject'] = subject
+    msg['From'] = from_addr
+    msg['To'] = recipient
+
+    s = smtplib.SMTP_SSL(smtp_server, smtp_port)
+    s.login(from_addr, password)
+    s.sendmail(from_addr, [recipient], msg.as_string())
+    s.quit()
+</code></pre>
                 </section>
             </div>
 

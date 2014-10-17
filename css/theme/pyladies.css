@@ -50,6 +50,7 @@ p.uppercase {
   width: 100%; }
 
 .reveal pre code {
+  max-height: 800px;
   padding: 0 0 20px 0; }
 
 .reveal .small {
@@ -227,3 +228,10 @@ p.uppercase {
   background-size: 100%;
   width: 500px;
   height: 295px; }
+
+.reveal .devtools-image {
+  margin: auto;
+  background: url(../../resources/devtools.png) no-repeat;
+  background-size: 100%;
+  width: 700px;
+  height: 600px; }
