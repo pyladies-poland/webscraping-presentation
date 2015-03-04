@@ -169,28 +169,28 @@
                         urllib2:
                         <pre><code class="python">
     import urllib2
-       
+
     gh_url = 'https://api.github.com'
-        
+
     req = urllib2.Request(gh_url)
-         
+
     password_manager = urllib2.HTTPPasswordMgrWithDefaultRealm()
     password_manager.add_password(None, gh_url, 'user', 'pass')
     auth_manager = urllib2.HTTPBasicAuthHandler(password_manager)
-      
+
     opener = urllib2.build_opener(auth_manager)
     urllib2.install_opener(opener)
     handler = urllib2.urlopen(req)
-             
+
     print handler.getcode()
     print handler.headers.getheader('content-type')
                         </code></pre>
                         requests:
                         <pre><code class="python">
     import requests
-      
+
     r = requests.get('https://api.github.com', auth=('user', 'pass'))
-      
+
     print r.status_code
     print r.headers['content-type']
                         </code></pre>
@@ -199,7 +199,7 @@
                         <p><b>requests</b> w swojej zwięzłości i prostocie jest tym, czego oczekujemy od Pythona</p>
                     </section>
                     <section>
-                        <p class="uppercase">Tworzenie zapytań</p>  
+                        <p class="uppercase">Tworzenie zapytań</p>
                         <div class="block">
                             <ul>
                                 <li>Zaimportowanie modułu
@@ -238,9 +238,9 @@
                                 <li>Pobranie nagłówków odpowiedzi:
 <pre><code class="python">
   r = requests.head("http://httpbin.org/get")
-</code></pre> 
+</code></pre>
                                 </li>
-                            </ul> 
+                            </ul>
                         </div>
                     </section>
                     <section>
@@ -293,7 +293,7 @@ True
                                 </li>
                             </ul>
                         </div>
-                    
+
                     </section>
                     <section>
                         <p class="uppercase orange">Ćwiczenie</p>
@@ -304,103 +304,146 @@ True
                     </section>
                 </section>
                 <section>
-                    <section>
-                        <h2>HTML</h2>
-                        <p><b>HyperText Markup Language</b> to standardowy język znaczników do tworzenia storn internetowych.</p>
-                        <div class="block">
-                            <p>Struktura:</p>
-<pre><code class="html">
-    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-        &lt;head&gt;
-            &lt;title&gt;To jest tytuł&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-            &lt;p&gt;Hello world!&lt;/p&gt;
-        &lt;/body&gt;
-    &lt;/html&gt;
-</code></pre>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="block">
-                            <p>Podstawowe elementy:</p>
-                            <ul>
-                                <li>tagi (oraz ich atrybuty)
-<pre><code class="html">
-    <tag attribute1="value1" attribute2="value2">content</tag>
-    <p style="font-size: 12px;">Hello world!</p> 
-</code></pre>
-
-<span class="small">Pusty element:</span>
-<pre><code class="html">
-    <img src="myimage.jpg" alt="Mój obrazek" height="50" width="50">
-</code></pre>
-                                </li>
-                                <li>Komentarze:
-<pre><code class="html">
-    <!-- To jest komentarz -->
-</code></pre>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="block">
-                            <ul>
-                                <li><p>Deklaracja typu dokumentu:</p>
-<span class="small">HTML5</span>
-<pre><code class="html">
-    &lt;!DOCTYPE html&gt;
-</code></pre>
-<span class="small">HTML4</span>
-<pre><code class="html">
-    &lt;!DOCTYPE root-element PUBLIC &quot;FPI&quot; [&quot;URI&quot;] [ 
-    &lt;!-- internal subset declarations --&gt;
-    ]&gt;
-</code></pre>
-<pre><code class="html">
-    &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
-</code></pre>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
+                  <section>
+                    <h3>Z czego składa się strona internetowa?</h3>
+                    <img src="resources/page1.png">
+                  </section>
+                  <section>
+                    <h3>Z klocków.</h3>
+                    <img src="resources/page2.png">
+                  </section>
+                  <section>
+                    <h3>Klocków ...</h3>
+                    <img src="resources/page3.png">
+                  </section>
+                  <section>
+                    <h3>I jeszcze mniejszych klocków.</h3>
+                    <img src="resources/page4.png">
+                  </section>
                 </section>
                 <section>
-                    <section>
-                        <h2>DOM</h2>
+                  <section>
+                    <h3>Za pomocą jakiej struktury możemy to przedstawić?</h3>
+                    <img src="resources/page4.png">
+                  </section>
+                  <section>
+                    <h3>Drzewo. Trochę genealogiczne.</h3>
+                    <img src="resources/element_tree.png">
+                  </section>
+                  <section>
+                    <h3>DOM (Document Object Model)</h3>
+                    <ul>
+                      <li>Struktura drzewa</li>
+                      <ul>
+                        <li>każdy element ma rodzica (poza tym na samej górze)</li>
+                        <li>każdy element (prawie) może mieć jedno lub więcej "dzieci"</li>
+                        <li>zupełnie jak ta lista</li>
+                      </ul>
+                      <li>Elementy mają różne atrybuty</li>
+                      <ul>
+                        <li>obrazek - adres, wysokość, szerokość, obramowanie</li>
+                        <li>paragraf - rozmiar czcionki, kolor, marginesy</li>
+                        <li>i inne ;)</li>
+                      </ul>
+                    </ul>
+                  </section>
+                </section>
+                <section>
+                  <section>
+                    <h3>HTML</h3>
+                    <p><strong>HyperText Markup Language</strong></p>
+                    <p>Lub po ludzku - sposób w jaki zapisujemy tekstowo nasze drzewo elementów</p>
+                  </section>
+                  <section>
+                    <h3>Wygląda tak</h3>
+                    <img src="resources/html.png">
+                  </section>
+                  <section>
+                    <h3>Lub w formie drzewka</h3>
+                    <img src="resources/html2.png">
+                  </section>
+                  <section>
+                    <h3>Tagi (zwane również elementami lub gałęziami)</h3>
                         <div class="block">
-                            <p><b>Document Object Model</b> - sposób reprezentacji oraz działań na obiektach w dokumentach HTML, XHTML oraz XML.</p>
-                            <p>Elementy dokumentu są węzłami zorganizowanymi w strukturę drzewiastą, tzw. drzewo DOM.</p>
-                            <ul>
-                                <li>DOM to w pełni obiektowa reprezentacja naszego dokumentu</li>
-                                <li>węzły mają atrybuty</li>
-                                <li>relacja rodzic-dziecko między węzłami</li>
-                            </ul>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="block">
-                            <p>Przykład graficznej reprezentacji drzewa DOM dla podanej tabeli HTML</p>
-<pre><code class="html" style="font-size: 0.9em;">
-      &lt;TABLE&gt;
-          &lt;TBODY&gt; 
-              &lt;TR&gt; 
-                  &lt;TD&gt;Shady Grove&lt;/TD&gt;
-                  &lt;TD&gt;Aeolian&lt;/TD&gt; 
-              &lt;/TR&gt; 
-              &lt;TR&gt;
-                  &lt;TD&gt;Over the River, Charlie&lt;/TD&gt;        
-                  &lt;TD&gt;Dorian&lt;/TD&gt; 
-              &lt;/TR&gt; 
-          &lt;/TBODY&gt;
-      &lt;/TABLE&gt;
+<ul>
+    <li>Przykładowy tag, (prawie) zawsze musi być zamknięty
+<pre><code class="html">
+<tag attribute1="value1" attribute2="value2">content</tag>
+<p style="font-size: 12px;">Hello world!</p>
 </code></pre>
-                            <div class="table-image"></div>
-                            <small>Obrazek ze strony <a href="http://www.w3.org/TR/DOM-Level-2-Core/introduction.html">W3C</a></small>
-                        </div>
-                    </section>
+
+<span class="small">Niektóre nie muszą (np. obrazek):</span>
+<pre><code class="html">
+<img src="myimage.jpg" alt="Mój obrazek" height="50" width="50">
+</code></pre>
+            </li>
+            <li>Możemy też wstawiać komentarze:
+<pre><code class="html">
+<!-- To jest komentarz -->
+</code></pre>
+            </li>
+        </ul>
+    </div>
+                  </section>
+                  <section>
+                    <h2>Podstawowe elementy</h2>
+                    <div class="block">
+<h4>Wstawienie obrazka (obrazków nie trzeba domykać za pomocą <code>&lt;/img&gt;</code>)</h4>
+<pre><code class="html">
+  <img src="/adres_obrazka.png"></code></pre>
+
+<h4>Paragraf tekstu:</h4>
+<pre><code class="html">
+  <p>Tutaj wstawić długi paragraf tekstu</p></code></pre>
+
+<h4>Linki:</h4>
+<pre><code class="html">
+  <a href="http://google.com/">Google</a></code></pre>
+
+<h4>Linki + obrazki:</h4>
+<pre><code class="html">
+  <a href="http://google.com/"><img src="/images/google-logo.png"></a></code></pre>
+</div>
+                  </section>
+                  <section>
+                    <div class="block">
+                    <h4>Ogólny tag oznaczający po prostu fragment:</h4>
+<pre><code class="html">
+<div>
+  <a href="/about-us/">O stronie</a>
+  <a href="/contact/">Kontakt</a>
+</div></code></pre>
+<p>
+  Używamy go głównie do wydzielania bardziej "logicznych" elementów strony, np. lewe menu,
+  jeden post na blogu, lista komentarzy.
+</p>
+                  </div>
+                  </section>
+                  <section>
+                    <h2>Klasy</h2>
+<pre><code class="html">
+  <div class="my-square">
+    Mój kwadracik
+  </div>
+</code></pre>
+<img src="resources/html_page1.png">
+                  </section>
+<section>
+  <h2>Dodajmy trochę CSS</h2>
+  <pre><code class="css">
+    .my-square {
+      background: red;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+  </code></pre>
+  <img src="resources/html_page2.png">
+</section>
+<section>
+  <h2>Wszystko razem</h2>
+  <img src="resources/html_page3.png">
+</section>
                     <section>
                         <p class="uppercase">Narzędzia developerskie</p>
                         <div class="devtools-image"></div>
